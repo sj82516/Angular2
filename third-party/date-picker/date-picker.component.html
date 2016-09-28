@@ -1,0 +1,34 @@
+<section>
+    <div class="date-picker">
+        <div class="control-bar">
+            <button> <i class="material-icons" (click)="decreaseMonth()">keyboard_arrow_left</i> </button>
+            <span class="monthTitle"> {{pickerTitle}} </span>
+            <button> <i class="material-icons" (click)="increaseMonth()">keyboard_arrow_right</i> </button>
+        </div>
+        <div class="calender">
+            <table>
+                <thead>
+                    <td>Sun</td>
+                    <td>Mon</td>
+                    <td>Tue</td>
+                    <td>Wed</td>
+                    <td>Thu</td>
+                    <td>Fri</td>
+                    <td>Sat</td>
+                </thead>
+                <tr *ngFor="let week of dates">
+                    <td *ngFor="let day of week" (click)="selectDate(day)">
+                        <span class="date"
+                              *ngIf="day!=null"
+                              [ngStyle]="{'display':day?'block':'none',
+                                          'color':day.isToday?'black':day.isInMonth?day.isHoliday?'red':'blue':day.isHoliday?'pink':'lightskyblue'}
+                                ">
+                            {{day.date}}
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="cancelArea" (click)="onCancel()"></div>
+</section>

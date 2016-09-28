@@ -1,0 +1,10 @@
+<section>
+    <div class="panel">
+        <span class="color-input" [ngStyle]="{'background-color': 'rgb('+selectedColor+')'}" (click)="panelShowup()"></span>
+        <div class="color-panel" [ngStyle]="{'visibility': panelVisible}">
+            <span class="color-option" *ngFor="let color of colorList" [ngStyle]="{'background-color': 'rgb('+color+')'}"
+                  (click)="selectColor(color)"></span>
+        </div>
+    </div>
+    <div class="cancelArea" (click)="onCancel()" [ngStyle]="{'visibility': panelVisible}"></div>
+</section>
