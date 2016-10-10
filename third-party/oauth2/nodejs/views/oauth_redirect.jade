@@ -1,0 +1,21 @@
+doctype html
+html
+    head
+        title= "Oauth Page"
+    body
+        p Welcome to Oauth page
+        p#status #{status}
+        p#content #{content}
+        script(type="text/javascript").
+            window.onload = function(){
+                // return msg to host window
+                if(document.getElementById('status').innerHTML=='success'){
+                    window.opener.postMessage({
+                        msg: 'success',
+                        info: document.getElementById('content').innerHTML
+                    }, '*');
+                    window.close();
+                }
+                window.opener.postMessage({msg:'error', infor:document.getElementById('content').innerHTML} , '*');
+                window.close();
+            };
